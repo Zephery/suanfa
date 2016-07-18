@@ -1,4 +1,4 @@
-package com;
+package BannarySearch;
 
 import java.util.Scanner;
 
