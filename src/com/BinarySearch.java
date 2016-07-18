@@ -10,7 +10,7 @@ public class BinarySearch {
         if (low < high) {
             int mid = (low + high) / 2;
             if (key == Array[mid])
-                return mid + 1;
+                return mid+1;
             else if (key < Array[mid]) {
                 return BinarySearch(Array, low, mid, key);
             } else
@@ -31,6 +31,6 @@ public class BinarySearch {
         }
         System.out.println("\nPlease input the number you want:");
         int key = sc.nextInt();
-        System.out.println(BinarySearch(num, 1, num.length, key));
+        System.out.println(BinarySearch(num, 0, num.length, key));
     }
 }
