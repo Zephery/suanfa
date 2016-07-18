@@ -10,12 +10,27 @@ public class BinarySearch {
         if (low < high) {
             int mid = (low + high) / 2;
             if (key == Array[mid])
-                return mid+1;
+                return mid + 1;
             else if (key < Array[mid]) {
                 return BinarySearch(Array, low, mid, key);
             } else
                 return BinarySearch(Array, mid, high, key);
         }
+        return -1;
+    }
+
+    static int BinSearch(int Array[], int low, int high, int key) {
+        while (low < high) {
+            int mid = (low + high) / 2;
+            if (key == Array[mid]) {
+                return mid+1;
+            } else if (key < Array[mid]) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
         return -1;
     }
 
@@ -31,6 +46,7 @@ public class BinarySearch {
         }
         System.out.println("\nPlease input the number you want:");
         int key = sc.nextInt();
-        System.out.println(BinarySearch(num, 0, num.length, key));
+        System.out.println("递归" + BinarySearch(num, 0, num.length, key));
+        System.out.println("非递归" + BinSearch(num, 0, num.length, key));
     }
 }
