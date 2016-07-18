@@ -18,6 +18,7 @@ public class InsertSort {
                     break;
                 }
             }
+            array[position] = currentvalue;
         }
     }
 
