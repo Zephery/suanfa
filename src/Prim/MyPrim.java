@@ -3,24 +3,19 @@ package Prim;
 /**
  * Created by Zephery on 2016/7/19.
  */
-public class Prim {
-
+public class MyPrim {
     private static int MAX = 65535;
 
-    private static void prim(int[][] graph, int n) {
-
+    private static void myprim(int[][] graph, int n) {
         char[] c = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'E', 'F'};
         int[] lowcost = new int[n];
         int[] mst = new int[n];
         int i, j, min, minid, sum = 0;
-
         for (i = 1; i < n; i++) {
-            lowcost[i] = graph[0][i];
+            lowcost[i] = graph[0][1];
             mst[i] = 0;
         }
-
         for (i = 1; i < n; i++) {
-
             min = MAX;
             minid = 0;
             for (j = 1; j < n; j++) {
@@ -29,11 +24,9 @@ public class Prim {
                     minid = j;
                 }
             }
-            System.out.println(c[mst[minid]] + "到" + c[minid] + " 权值：" + min);
-
+            System.out.println(c[minid] + "到" + c[minid] + "权值" + min);
             sum += min;
             lowcost[minid] = 0;
-
             for (j = 1; j < n; j++) {
                 if (graph[minid][j] < lowcost[j]) {
                     lowcost[j] = graph[minid][j];
@@ -41,13 +34,10 @@ public class Prim {
                 }
             }
         }
-
         System.out.println("sum:" + sum);
-
     }
 
-
-    public static void main(String[] args) {
+    public static void main(String args[]) {
         int[][] map = new int[][]{
                 {0, 10, MAX, MAX, MAX, 11, MAX, MAX, MAX},
                 {10, 0, 18, MAX, MAX, MAX, 16, MAX, 12},
@@ -59,7 +49,6 @@ public class Prim {
                 {MAX, MAX, MAX, 16, 7, MAX, 19, 0, MAX},
                 {MAX, 12, 8, 21, MAX, MAX, MAX, MAX, 0}
         };
-        prim(map, map.length);
+        myprim(map, map.length);
     }
-
 }
