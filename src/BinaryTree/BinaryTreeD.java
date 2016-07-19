@@ -69,7 +69,6 @@ public class BinaryTreeD {
                 node = node.getRightChild();
             }
         }
-
     }
 
     public static void inOrderTraverse(Node root) {
