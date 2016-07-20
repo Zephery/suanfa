@@ -19,7 +19,7 @@ public class radixsort {
         int[] output = new int[a.length];
         int[] bucket = new int[10];
         for (int i = 0; i < a.length; i++)
-            bucket[(a[i] / exp) % 10]++;
+            bucket[(a[i] / exp) % 10]++;      //问题==
         for (int i = 1; i < 10; i++)
             bucket[i] += bucket[i - 1];
         for (int i = a.length - 1; i >= 0; i--) {
