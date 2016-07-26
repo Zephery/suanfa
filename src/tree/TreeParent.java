@@ -12,7 +12,6 @@ public class TreeParent<E> {
     private Node<E>[] nodes;
     private int nodeNums;
 
-
     public TreeParent(E data) {
         treeSize = DEFAULT_TREE_SIZE;
         nodes = new Node[treeSize];
