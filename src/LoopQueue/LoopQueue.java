@@ -1,15 +1,17 @@
+package LoopQueue;
+
 /**
  * Created by Zephery on 2016/7/31.
  */
 public class LoopQueue<T> {
-    private int DEFAULT_SIZE = 10;
-    private int capacity;
+    private int DefaultSize = 10;
+    private int capacity;     //所输入的容量;
+    private int front;
+    private int rear;
     private Object[] elementData;
-    private int front = 0;
-    private int rear = 0;
 
     public LoopQueue() {
-        capacity = DEFAULT_SIZE;
+        capacity = DefaultSize;
         elementData = new Object[capacity];
     }
 
@@ -30,35 +32,28 @@ public class LoopQueue<T> {
         return rear == front && elementData[rear] == null;
     }
 
-    public int getLength() {
-        if (isempty()) {
-            throw new IndexOutOfBoundsException("Full");
-        }
+    public int length() {
+        if (isempty())
+            throw new IndexOutOfBoundsException("full");
         return rear > front ? rear - front : capacity - (front - rear);
     }
 
     public void add(T element) {
-        if (rear == front && elementData[front] != null) {
-            throw new IndexOutOfBoundsException("Full");
+        if (rear==front&&elementData[front]!=null) {
+            throw new IndexOutOfBoundsException("full");
         }
         elementData[rear++] = element;
         rear = rear == capacity ? 0 : rear;
     }
-
-    public T element(){
-        if(isempty()){
-            throw new IndexOutOfBoundsException("empty");
+    @SuppressWarnings("unchecked")
+    public T remove() {
+        if (isempty()) {
+            throw new IndexOutOfBoundsException("nicai");
         }
-        return (T)elementData[front];
-    }
-
-    public T remove(){
-        if(isempty()){
-            throw new IndexOutOfBoundsException("empty");
-        }
-        T oldValue=(T)elementData[front];
-        elementData[front++]=null;
-        front=front==capacity?0:front;
+        T oldValue = (T) elementData[front];
+        elementData[front] = null;
+        front = front == capacity ? 0 : front;
         return oldValue;
     }
+
 }
